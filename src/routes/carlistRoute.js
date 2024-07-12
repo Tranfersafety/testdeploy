@@ -1,10 +1,10 @@
 import express from "express";
-import carlistController from "../controllers/carlistController.js";
+import * as carlistController from "../controllers/carlistController.js";
 
 const router = express.Router();
 
 router.get("/:id", carlistController.getcar);
 
-router.post('/togglePin', carlistController.togglePin);
+router.post("/togglePin", carlistController.togglePin);
 
 export default router;
