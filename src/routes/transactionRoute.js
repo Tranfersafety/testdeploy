@@ -1,5 +1,5 @@
 import express from "express";
-import * as transactionControl from "../controllers/transactionControl.js";
+import transactionControl from "../controllers/transactionControl.js";
 
 const router = express.Router();
 

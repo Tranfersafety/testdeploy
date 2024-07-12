@@ -1,18 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectDB from "./config/database.js";
+import connectDB from "./src/config/database.js";
 import morgan from "morgan";
 import { rateLimit } from "express-rate-limit";
 import helmet from "helmet";
-import notfoundMiddleware from "./middleware/notfoundMiddleware.js";
-import errorHandlerMiddleware from "./middleware/errorMiddleware.js";
-import userRoutes from "./routes/userRoute.js";
-import carRoutes from "./routes/carRoute.js";
-import temporaryCarRoute from "./routes/temporaryCarRoute.js";
-import transactionRoute from "./routes/transactionRoute.js";
-import carlistRoute from "./routes/carlistRoute.js";
-import bodyParser from 'body-parser';
+import notfoundMiddleware from "./src/middleware/notfoundMiddleware.js";
+import errorHandlerMiddleware from "./src/middleware/errorMiddleware.js";
+import userRoutes from "./src/routes/userRoute.js";
+import carRoutes from "./src/routes/carRoute.js";
+import temporaryCarRoute from "./src/routes/temporaryCarRoute.js";
+import transactionRoute from "./src/routes/transactionRoute.js";
+import carlistRoute from "./src/routes/carlistRoute.js";
+import bodyParser from "body-parser";
 
 //Facilitate
 dotenv.config();
@@ -32,7 +32,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // > Static Files
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // Routes
 app.use("/api/users", userRoutes);
@@ -40,7 +40,6 @@ app.use("/api/cars", carRoutes);
 app.use("/api/temporarycars", temporaryCarRoute);
 app.use("/api/transaction", transactionRoute);
 app.use("/api/car-list", carlistRoute);
-
 
 //Handle404
 app.use(notfoundMiddleware);
